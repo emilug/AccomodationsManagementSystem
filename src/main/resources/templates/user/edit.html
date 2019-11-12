@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update/edit User</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<!--<th:block th:include="logout.html"/>-->
+<body>
+<p>
+<h3 align="center">This section allows you to update or delete a new user</h3>
+<h4>Please enter the user's details below:</h4></p>
+<table>
+    <form action="#" th:action="@{/user/update}" th:object="${user}" method="post">
+        <tr>
+            <td><input type="hidden" th:field="*{userId}"/></td>
+            <td><input type="text" th:field="*{userName}" th:placeholder="UserName" required/></td>
+            <td><input type="text" th:field="*{name}" th:placeholder="Name" required/></td>
+            <td><input type="password" th:field="*{password}" th:placeholder="Password" minlength="5" required/></td>
+            <td><input type="submit" value="Update User Details"/> <input type="reset" value="Reset fields"/></td>
+        </tr>
+    </form>
+</table>
+<input type="button" value="Back to list" onclick="window.location='/user/list';"/>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update/edit RoomType</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<!--<th:block th:include="logout.html"/>-->
+<body>
+<p>
+<h3 align="center">This section allows you to update or delete a roomType</h3>
+<h4>Please enter the roomType's details below:</h4></p>
+<table>
+    <form action="#" th:action="@{/roomType/update}" th:object="${roomType}" method="post">
+        <tr>
+            <td><input type="hidden" th:field="*{roomTypeId}"/></td>
+            <td><input type="text" th:field="*{name}" th:placeholder="Description" required/></td>
+            <td><input type="text" th:field="*{price}" th:placeholder="Price" required/></td>
+            <td><input type="number" th:field="*{noOfGuests}" th:placeholder="noOfGuests" min="1" max="5" required/></td>
+            <td><input type="submit" value="Update roomType details"/> <input type="reset" value="Reset fields"/></td>
+        </tr>
+    </form>
+</table>
+<input type="button" value="Back to list" onclick="window.location='/roomType/list';"/>
+</body>
+</html>

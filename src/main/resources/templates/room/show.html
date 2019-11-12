@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Room Review</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<!--<th:block th:include="logout.html"/>-->
+<body>
+<table>
+    <h2>Room List</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>RoomId</th>
+            <th>Room Name</th>
+            <th>Room Type</th>
+            <th>Room Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="r : ${room}">
+            <td th:text="${r.getRoomId()}"></td>
+            <td th:text="${r.getRoomName()}"></td>
+            <td th:text="${r.getRoomTypeId().getName()}"></td>
+            <td th:text="${r.getRoomTypeId().getPrice()}"></td>
+            <td><a th:href="@{/room/edit/{id}(id=${r.getRoomId()})}">Edit</a></td>
+            <td><a th:href="@{/room/delete/{id}(id=${r.getRoomId()})}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</table>
+<input type="button" value="Back to list" onclick="window.location='/room/list';"/>
+<button onclick="window.location='/room/create';">Back to creation</button>
+</body>
+</html>
+
+

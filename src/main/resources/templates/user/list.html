@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<!--<th:block th:include="logout.html"/>-->
+<body>
+
+<table>
+    <h2>User List</h2>
+    <input type="search" name="Search user" placeholder="Search user"/>
+    <input type="submit" value="Search"/>
+    <table>
+        <thead>
+        <tr>
+            <th>UserId</th>
+            <th>UserName</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${user}">
+            <td th:text="${user.userId}"></td>
+            <td th:text="${user.userName}"></td>
+            <td th:text="${user.name}"></td>
+            <td><a th:href="@{/user/edit/{id}(id=${user.userId})}">Edit</a></td>
+            <td><a th:href="@{/user/delete/{id}(id=${user.userId})}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</table>
+<button onclick="window.location='/user/create';">Back to creation</button>
+</body>
+</html>

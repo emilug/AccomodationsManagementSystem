@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create new client</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin - Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link href="/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/css/sb-admin.css" rel="stylesheet">
+</head>
+
+<!--<th:block th:include="logout.html"/>-->
+<body>
+<div th:insert="~{common :: navbar}"></div>
+
+
+<div th:insert="common :: sidebar"></div>
+
+<div id="content-wrapper">
+
+    <div class="container-fluid">
+        <p>
+        <h4>Click on the button to view the client list:</h4>
+        <p>
+            <input type="button" onClick="window.location='/client/list';" value="Client list"/>
+            <!--    <a th:href="@{/client/list}">View client list</a>-->
+        </p>
+        <h4>Please enter the client's details below:</h4></p>
+        <table>
+            <form action="#" th:action="@{save}" th:object="${client}" method="post">
+                <tr>
+
+                    <td><input type="text" th:field="*{name}" th:placeholder="Name" required/></td>
+                    <td><input type="text" th:field="*{address}" th:placeholder="Address" required/></td>
+                    <td><input type="text" th:field="*{cnp}" th:placeholder="CNP" minlength="13" required/></td>
+                    <td><input type="tel" th:field="*{phoneNo}" th:placeholder="Phone" pattern="[0-7]{4}[0-9]{6}"
+                               required/>
+                    </td>
+                    <td><input type="email" th:field="*{email}" th:placeholder="E-mail" required/></td>
+                    <td><input type="hidden" th:field="*{clientId}"/></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Save Client"/></td>
+                    <td><input type="reset" value="Reset Fields"/></td>
+                </tr>
+            </form>
+        </table>
+    </div>
+</div>
+</div>
+<!-- Bootstrap core JavaScript-->
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Page level plugin JavaScript-->
+<script src="/vendor/chart.js/Chart.min.js"></script>
+<script src="/vendor/datatables/jquery.dataTables.js"></script>
+<script src="/vendor/datatables/dataTables.bootstrap4.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="/js/sb-admin.min.js"></script>
+
+<!-- Demo scripts for this page-->
+<script src="/js/demo/datatables-demo.js"></script>
+<script src="/js/demo/chart-area-demo.js"></script>
+</body>
+</html>

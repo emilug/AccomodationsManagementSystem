@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create new room</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<!--<th:block th:include="logout.html"/>-->
+<body>
+<p>
+<h3 align="center">This section allows you to create a new room</h3>
+<h4>Click on the button to view the room list:</h4>
+<p>
+    <input type="button" onClick="window.location='/room/list';" value="Room list"/>
+</p>
+<h4>Please enter the room's details below:</h4></p>
+<table>
+    <form action="#" th:action="@{save}" th:object="${room}" method="post">
+        <tr>
+            <td><input type="text" th:field="*{roomName}" placeholder="Room Name" required></td>
+            <td><select th:field="*{roomTypeId}">
+                <option value="">--</option>
+                <option th:each="roomType:${roomTypeList}"
+                        th:value="${roomType.roomTypeId}"
+                        th:utext="${roomType.name}"/>
+            </select></td>
+            </label></td>
+            <td><input type="hidden" th:field="*{roomId}"/></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Save Room"/> </td>
+            <td><input type="reset" value="Reset Fields"/></td>
+        </tr>
+    </form>
+</table>
+
+</body>
+</html>

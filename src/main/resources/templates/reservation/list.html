@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Client List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<!--<th:block th:include="logout.html"/>-->
+<body>
+
+<table>
+    <h2>Client List</h2>
+    <input type="search" name="Search client" placeholder="Search client"/>
+    <input type="submit" value="Search"/>
+    <table>
+        <thead>
+        <tr>
+            <th>ClientId</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>CNP</th>
+            <th>Phone</th>
+            <th>E-mail</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="client : ${client}">
+            <td th:text="${client.clientId}"></td>
+            <td th:text="${client.name}"></td>
+            <td th:text="${client.address}"></td>
+            <td th:text="${client.cnp}"></td>
+            <td th:text="${client.phoneNo}"></td>
+            <td th:text="${client.email}"></td>
+            <td><a th:href="@{/client/edit/{id}(id=${client.clientId})}">Edit</a></td>
+            <td><a th:href="@{/client/delete/{id}(id=${client.clientId})}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</table>
+<button onclick="window.location='/client/create';">Back to creation</button>
+</body>
+</html>
