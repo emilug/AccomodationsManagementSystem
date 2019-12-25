@@ -24,8 +24,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/", "/unsecured").permitAll()
-                .antMatchers("/client/*").hasRole("ADMIN")
-                .antMatchers("/room/list").hasRole("EMPLOYEE")
+//                .antMatchers("/client/*").hasRole("ADMIN")
+//                .antMatchers("/room/list").hasRole("EMPLOYEE")
                 .and()
                 .exceptionHandling().accessDeniedPage("/accessDenied")
                 .and()
